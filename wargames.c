@@ -3,31 +3,18 @@
 
 void moveCursorRight(int steps) {
     for (int i = 0; i < steps; i++) {
-        printf("  "); // Print the cursor
-        fflush(stdout); // Ensure the output is displayed immediately
-        usleep(50000); // Sleep for 25 milliseconds
+        printf("  ");
+        fflush(stdout);
+        usleep(50000);
     }
 }
-void printLOGON(){
-    printf("L");
-    fflush(stdout);
-    usleep(25000);
-    printf("O");
-    fflush(stdout);
-    usleep(25000);
-    printf("G");
-    fflush(stdout);
-    usleep(25000);
-    printf("O");
-    fflush(stdout);
-    usleep(25000);
-    printf("N");
-    fflush(stdout);
-    usleep(25000);
-    printf(":");
-    fflush(stdout);
-    usleep(25000);
-    printf("  ");
+void printDelay(const char *str) {
+    while (*str) {
+        printf("%c", *str);
+        fflush(stdout);
+        usleep(30000);  
+        str++;
+    }
 }
 
 int main() {
@@ -42,7 +29,12 @@ int main() {
     printf("                         ");
     moveCursorRight(13);
     char logon[255]; 
-    printLOGON();
+    printDelay("LOGON:  ");
     fgets(logon, sizeof(logon), stdin);
+    if (logon != "Joshua"){
+        usleep(3000000);
+        printDelay("INDENTIFICATION NOT RECOGNIZED BY SYSTEM\n");
+        printDelay("--CONNECTION TERMINATED--");
+    }
     return 0;
 }

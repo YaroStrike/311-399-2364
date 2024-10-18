@@ -40,7 +40,11 @@ int main() {
             printDelay("OK\n");
             logonLoop = 0;
         }
-        else if (strcmp(logon, "Help Logon") == 0){
+        else if (strcmp(logon, "Help Games") == 0){
+            printDelay("'GAMES' REFERS TO MODELS, SIMULATIONS AND GAMES\nWHICH HAVE TACTICAL AND STRATEGIC APPLICATIONS\n");
+            logonLoop = 0;
+        }
+        else if (strstr(logon, "help") != NULL){
             printDelay("HELP NOT AVAILABLE\n\n");
         }
         else {
